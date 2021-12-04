@@ -1,3 +1,4 @@
+part1f :: [String] -> Int -> Int -> Int
 part1f [] pos dep = pos * dep
 part1f (com : coms) pos dep
     | dir == "forward" = part1f coms (pos + x) dep
@@ -6,8 +7,11 @@ part1f (com : coms) pos dep
     where dir = head $ words com
           x   = read $ last $ words com
 
+part1 :: [String] -> Int
 part1 list = part1f list 0 0
 
+
+part2f :: [String] -> Int -> Int -> Int -> Int
 part2f [] pos dep aim = pos * dep
 part2f (com : coms) pos dep aim
     | dir == "forward" = part2f coms (pos + x) (dep + aim * x) aim
@@ -16,7 +20,9 @@ part2f (com : coms) pos dep aim
     where dir = head $ words com
           x   = read $ last $ words com
 
+part2 :: [String] -> Int
 part2 list = part2f list 0 0 0
+
 
 main = do
     input <- lines <$> readFile "input.txt"
