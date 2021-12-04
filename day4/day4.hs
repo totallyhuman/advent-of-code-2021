@@ -1,23 +1,23 @@
 import Data.List
 import Data.Ord
 
-isBingo nums board = any ((== 5) . length . intersect nums) (board ++ transpose board)
+isBingo nums board = any (== 5) [length (intersect nums l) | l <- board ++ transpose board]
 winners nums boards = [head [(b, n) | n <- drop 5 $ inits nums, isBingo n b] | b <- boards]
 
-score (b, n) = sum (filter (`notElem` n) $ foldl (++) [] b) * last n
+score (board, nums) = sum [i | r <- board, i <- r, i `notElem` nums] * last nums
 
 part1 nums boards = score $ minimumBy (comparing (length . snd)) $ winners nums boards
 part2 nums boards = score $ maximumBy (comparing (length . snd)) $ winners nums boards
 
-groups _ [] = []
-groups n l  = (take n l) : (groups n (drop n l))
-
-parseBoard b = [map (read :: String -> Int) $ words r | r <- b]
+parseBoards []         = []
+parseBoards (_ : list) = [map read $ words r | r <- board] : parseBoards boards
+                             where (board, boards) = span (/= "") list
 
 main = do
     input <- lines <$> readFile "input.txt"
-    nums <- return ((read :: String -> [Int]) $ "[" ++ head input ++ "]")
-    boards <- return (map (parseBoard . (take 5)) $ groups 6 $ drop 2 input)
+
+    let nums = read $ "[" ++ head input ++ "]"
+        boards = parseBoards $ tail input
 
     print $ part1 nums boards
     print $ part2 nums boards
