@@ -35,6 +35,6 @@ part2 list = binToDec (oxyGenerator list 0) * binToDec (co2Scrubber list 0)
 
 
 main = do
-  input <- lines <$> readFile "input.txt"
-  print $ part1 input
-  print $ part2 input
+    input <- lines <$> readFile "input.txt"
+    print $ part1 input
+    print $ part2 input
