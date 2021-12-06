@@ -33,7 +33,7 @@ parseLine line = ((x1, y1), (x2, y2))
 
 
 main = do
-  input <- map parseLine . lines <$> readFile "input.txt"
+    input <- map parseLine . lines <$> readFile "input.txt"
 
-  print $ part1 input
-  print $ part2 input
+    print $ part1 input
+    print $ part2 input
