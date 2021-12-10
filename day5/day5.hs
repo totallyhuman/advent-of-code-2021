@@ -23,7 +23,7 @@ part2 = length . filter ((>= 2) . length) . group . sort . concatMap points
 
 split :: Eq a => [a] -> [a] -> [[a]]
 split d s
-    | d `isInfixOf` s = (x \\ d) : split d (s \\ x)
+    | d `isInfixOf` s = take (length x - length d) x : split d (s \\ x)
     | otherwise       = [s]
     where x = head $ dropWhile (not . isSuffixOf d) $ inits s
 
