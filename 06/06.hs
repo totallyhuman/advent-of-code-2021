@@ -20,7 +20,7 @@ part2 = sum . simulate 256 . collect
 
 
 main = do
-    input <- readFile "input.txt"
+    input <- readFile "06.in"
 
     let list = read $ "[" ++ input ++ "]"
 

@@ -25,7 +25,7 @@ parseBoards (_ : list) = [map read $ words r | r <- board] : parseBoards boards
 
 
 main = do
-    input <- lines <$> readFile "input.txt"
+    input <- lines <$> readFile "04.in"
 
     let nums = read $ "[" ++ head input ++ "]"
         boards = parseBoards $ tail input

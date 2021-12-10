@@ -52,7 +52,7 @@ split d s
 parseLine = split " | "
 
 main = do
-    input <- map parseLine . lines <$> readFile "input.txt"
+    input <- map parseLine . lines <$> readFile "08.in"
 
     print $ part1 input
     print $ part2 input

@@ -8,7 +8,7 @@ part2 l = minimum [sum [f $ abs $ j - i | j <- l] | i <- [minimum l .. maximum l
 
 
 main = do
-    input <- readFile "input.txt"
+    input <- readFile "07.in"
 
     let list = read $ "[" ++ input ++ "]"
 

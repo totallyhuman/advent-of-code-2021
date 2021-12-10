@@ -25,6 +25,6 @@ part2 list = part2f list 0 0 0
 
 
 main = do
-    input <- lines <$> readFile "input.txt"
+    input <- lines <$> readFile "02.in"
     print $ part1 input
     print $ part2 input

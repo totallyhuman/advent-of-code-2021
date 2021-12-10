@@ -7,6 +7,6 @@ part2 list = length $ filter id $ zipWith (<) list (drop 3 list)
 
 
 main = do
-    input <- map read . lines <$> readFile "input.txt"
+    input <- map read . lines <$> readFile "01.in"
     print $ part1 input
     print $ part2 input

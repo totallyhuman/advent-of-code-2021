@@ -35,7 +35,7 @@ part2 l = scores !! (length scores `div` 2)
 
 
 main = do
-    input <- lines <$> readFile "input.txt"
+    input <- lines <$> readFile "10.in"
 
     print $ part1 input
     print $ part2 input
