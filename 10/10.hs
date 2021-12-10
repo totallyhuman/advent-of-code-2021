@@ -1,19 +1,17 @@
 import Data.List (sort)
-import Data.Maybe (fromJust, isJust)
 
 data Status = Complete | Incomplete String | Corrupted Char
 
 checkSyntax :: String -> String -> Status
 checkSyntax "" "" = Complete
-checkSyntax d ""  = Incomplete d
+checkSyntax d  "" = Incomplete d
 checkSyntax d (c : l)
-    | c == '('   = checkSyntax (')' : d) l
-    | c == '['   = checkSyntax (']' : d) l
-    | c == '{'   = checkSyntax ('}' : d) l
-    | c == '<'   = checkSyntax ('>' : d) l
-    | otherwise  = if head d == c
-                       then checkSyntax (tail d) l
-                       else Corrupted c
+    | c == '('    = checkSyntax (')' : d) l
+    | c == '['    = checkSyntax (']' : d) l
+    | c == '{'    = checkSyntax ('}' : d) l
+    | c == '<'    = checkSyntax ('>' : d) l
+    | c == head d = checkSyntax (tail d) l
+    | otherwise   = Corrupted c
 
 
 part1 :: [String] -> Int
